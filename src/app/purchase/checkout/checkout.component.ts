@@ -68,6 +68,9 @@ export class CheckoutComponent implements OnInit {
     if( this.userLoggedIn() ) {
       this.orderService.placeOrder(userDetails);
     }
+    else {
+      console.error("user not logged in");
+    }
   }
 
   openSnackBar(): void {

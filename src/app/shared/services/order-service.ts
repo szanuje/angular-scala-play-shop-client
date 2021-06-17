@@ -18,6 +18,10 @@ export class OrderService {
           });
           let options = { headers: headers };
         this.http.post<any>(environment.api_url + '/api/users/' + this.cookieService.get('user') + '/order', userDetails, options)
-        .subscribe(res => console.log(res));
+        .subscribe(res => {
+          this.cookieService.delete('basket');
+          window.location.href = '/checkout';
+          console.log("placed order");
+        });
     }
 }

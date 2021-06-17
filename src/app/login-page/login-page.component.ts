@@ -86,7 +86,10 @@ export class LoginPageComponent {
   onRegisterSubmit() {
     console.log(this.registerForm.value);
     this.http.post<any>(environment.api_url + '/api/register', this.registerForm.value, {observe: 'response'})
-    .subscribe(res => console.log(res));
+    .subscribe(res => {
+      console.log(res);
+      window.location.href = '/login';
+    });
   }
 
   loginWithGoogle() {

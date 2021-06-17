@@ -12,10 +12,11 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root',
 })
 export class BasketService {
-  private basket: UserBasket = new UserBasket();
+  private basket: UserBasket;
   private basketSubject = new Subject<UserBasket>();
 
   constructor(private http: HttpClient, private cookieService: CookieService) {
+    this.basket = new UserBasket();
     this.getBaskett();
   }
 
