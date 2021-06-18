@@ -23,7 +23,11 @@ export class BasketService {
   getBaskett(): void {
     if (this.userLoggedIn()) {
       this.fetchUserBasket().subscribe((b) => {
-        this.basket = plainToClass(UserBasket, b);
+        if(b === null) {
+          this.basket = new UserBasket();
+        } else {
+          this.basket = plainToClass(UserBasket, b);
+        }
       });
     } else if (this.cookieService.get('basket') !== '') {
       this.basket = plainToClass(
